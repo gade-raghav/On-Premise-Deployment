@@ -300,7 +300,15 @@ Installation and Setup is complete.
 
 ## Use Cases and Edge Conditions
 
-- It is assumed that we 
+- The entire deployment has been done using local setup and the same can be replicated on cloud environment if provided.
+
+- It is assumed that we have required volumes and disk space available for performing updates/upgrades, scaling environment etc.
+
+- It is assumed that the application development follows a strictly GitOps approach for CI/CD.
+
+- Since helm charts are used for deployment, they are very reliable and hence requires minimal edit to charts. So every commit coming from the remote git source repo is already code analysed.
+
+
 
 ## Workflow
 
