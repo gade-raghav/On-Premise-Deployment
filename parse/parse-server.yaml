@@ -1,0 +1,329 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    meta.helm.sh/release-name: parse-server
+    meta.helm.sh/release-namespace: parse
+  creationTimestamp: "2020-11-06T15:26:55Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/instance: parse-server
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: parse
+    helm.sh/chart: parse-12.0.3
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:meta.helm.sh/release-name: {}
+          f:meta.helm.sh/release-namespace: {}
+        f:labels:
+          .: {}
+          f:app.kubernetes.io/component: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/managed-by: {}
+          f:app.kubernetes.io/name: {}
+          f:helm.sh/chart: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          f:matchLabels:
+            .: {}
+            f:app.kubernetes.io/component: {}
+            f:app.kubernetes.io/instance: {}
+            f:app.kubernetes.io/name: {}
+        f:strategy:
+          f:rollingUpdate:
+            .: {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:labels:
+              .: {}
+              f:app.kubernetes.io/component: {}
+              f:app.kubernetes.io/instance: {}
+              f:app.kubernetes.io/managed-by: {}
+              f:app.kubernetes.io/name: {}
+              f:helm.sh/chart: {}
+          f:spec:
+            f:containers:
+              k:{"name":"parse"}:
+                .: {}
+                f:env:
+                  .: {}
+                  k:{"name":"MONGODB_HOST"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"MONGODB_PASSWORD"}:
+                    .: {}
+                    f:name: {}
+                    f:valueFrom:
+                      .: {}
+                      f:secretKeyRef:
+                        .: {}
+                        f:key: {}
+                        f:name: {}
+                  k:{"name":"MONGODB_PORT"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"PARSE_APP_ID"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"PARSE_ENABLE_CLOUD_CODE"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"PARSE_HOST"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"PARSE_MASTER_KEY"}:
+                    .: {}
+                    f:name: {}
+                    f:valueFrom:
+                      .: {}
+                      f:secretKeyRef:
+                        .: {}
+                        f:key: {}
+                        f:name: {}
+                  k:{"name":"PARSE_MOUNT_PATH"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"PARSE_PORT_NUMBER"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:livenessProbe:
+                  .: {}
+                  f:failureThreshold: {}
+                  f:httpGet:
+                    .: {}
+                    f:httpHeaders: {}
+                    f:path: {}
+                    f:port: {}
+                    f:scheme: {}
+                  f:initialDelaySeconds: {}
+                  f:periodSeconds: {}
+                  f:successThreshold: {}
+                  f:timeoutSeconds: {}
+                f:name: {}
+                f:ports:
+                  .: {}
+                  k:{"containerPort":1337,"protocol":"TCP"}:
+                    .: {}
+                    f:containerPort: {}
+                    f:name: {}
+                    f:protocol: {}
+                f:readinessProbe:
+                  .: {}
+                  f:failureThreshold: {}
+                  f:httpGet:
+                    .: {}
+                    f:httpHeaders: {}
+                    f:path: {}
+                    f:port: {}
+                    f:scheme: {}
+                  f:initialDelaySeconds: {}
+                  f:periodSeconds: {}
+                  f:successThreshold: {}
+                  f:timeoutSeconds: {}
+                f:resources: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+                f:volumeMounts:
+                  .: {}
+                  k:{"mountPath":"/bitnami/parse"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext:
+              .: {}
+              f:fsGroup: {}
+              f:runAsUser: {}
+            f:terminationGracePeriodSeconds: {}
+            f:volumes:
+              .: {}
+              k:{"name":"parse-data"}:
+                .: {}
+                f:name: {}
+                f:persistentVolumeClaim:
+                  .: {}
+                  f:claimName: {}
+    manager: Go-http-client
+    operation: Update
+    time: "2020-11-06T15:26:55Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:availableReplicas: {}
+        f:conditions:
+          .: {}
+          k:{"type":"Available"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Progressing"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:updatedReplicas: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-11-06T15:51:42Z"
+  name: parse-server-server
+  namespace: parse
+  resourceVersion: "19315"
+  selfLink: /apis/apps/v1/namespaces/parse/deployments/parse-server-server
+  uid: 9e754404-bc3d-4821-98b0-d1def50cf172
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: server
+      app.kubernetes.io/instance: parse-server
+      app.kubernetes.io/name: parse
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/component: server
+        app.kubernetes.io/instance: parse-server
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/name: parse
+        helm.sh/chart: parse-12.0.3
+    spec:
+      containers:
+      - env:
+        - name: PARSE_HOST
+          value: 0.0.0.0
+        - name: PARSE_PORT_NUMBER
+          value: "1337"
+        - name: PARSE_MOUNT_PATH
+          value: /parse
+        - name: PARSE_APP_ID
+          value: myappID
+        - name: PARSE_MASTER_KEY
+          valueFrom:
+            secretKeyRef:
+              key: master-key
+              name: parse-server
+        - name: PARSE_ENABLE_CLOUD_CODE
+          value: "no"
+        - name: MONGODB_HOST
+          value: parse-server-mongodb
+        - name: MONGODB_PORT
+          value: "27017"
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: mongodb-root-password
+              name: parse-server-mongodb
+        image: docker.io/bitnami/parse:4.3.0-debian-10-r71
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 5
+          httpGet:
+            httpHeaders:
+            - name: X-Parse-Application-Id
+              value: myappID
+            path: /parse/users
+            port: server-http
+            scheme: HTTP
+          initialDelaySeconds: 120
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: parse
+        ports:
+        - containerPort: 1337
+          name: server-http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 5
+          httpGet:
+            httpHeaders:
+            - name: X-Parse-Application-Id
+              value: myappID
+            path: /parse/users
+            port: server-http
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /bitnami/parse
+          name: parse-data
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 1001
+        runAsUser: 1001
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: parse-data
+        persistentVolumeClaim:
+          claimName: parse-server
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2020-11-06T15:51:42Z"
+    lastUpdateTime: "2020-11-06T15:51:42Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2020-11-06T15:51:42Z"
+    lastUpdateTime: "2020-11-06T15:51:42Z"
+    message: ReplicaSet "parse-server-server-866c6b9b5c" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
