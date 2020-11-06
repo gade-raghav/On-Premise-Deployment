@@ -78,10 +78,13 @@ Now let's run kubernetes cluster
 
 Check status using the following commands and make sure everything is running.
 
+![microk8s status](/images/microk8sstatus.png)
+
 `kubectl get nodes` (Check if node is ready. We are using a single node.)
 
 `kubectl get all --all-namespaces`
 
+![kubectl get all](/images/kubectlgetall.png)
 
 
 #### [Lens](https://k8slens.dev/) Setup:
@@ -93,6 +96,8 @@ Lens is and IDE for working Kubernetes clusters. You just need to pass in the ku
 I have downloaded the AppImage which is extremely easy to use. After download give executable permissions to file and run using the following command
 
 `./Lens-3.6.6.AppImage`
+
+![Lens install](/images/Lens.png)
 
 Provide path to kubernetes config file and it gets all the information about the cluster.
 
@@ -115,6 +120,7 @@ Run the following commands:
 
 `./get_helm.sh`
 
+
 #### [Parse Server](https://github.com/parse-community/parse-server) Setup:
 
 Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js.
@@ -130,9 +136,13 @@ Pull Bitnami repo
 
 `helm repo add bitnami https://charts.bitnami.com/bitnami`
 
+![helm repo add](/images/helmaddrepo.png)
+
 Search for for the parse package
 
 `helm search repo parse`
+
+![helm search parse](/images/helmsearchparse.png)
 
 We will use bitnami/parse which is stable
 
@@ -140,18 +150,26 @@ Let's inspect the values of bitnami/parse chart
 
 `helm inspect values bitnami/parse >> ~/atlanwork/parse.values`
 
-We need to change the service type from LoadBalance to NodePort as we are running it in local environment.Make the following changes (nodePort: --your-choice(between 30000-32767 type: NodePort)
+![helm inspect parse](/images/helmiparse.png)
+
+We need to change the service type from LoadBalance to NodePort as we are running it in local environment.Make the following changes (type: NodePort)
+
+![parse configuration](/images/parseconf.png)
 
 Create a namespace which helps monitoring easy
 
 `kubectl create namespace parse`
 
+
 **Deploying parse server using helm chart**
 
 name: parse-server 
+
 namespace: parse
 
 `helm install parse-server bitname/parse --values parse.values -n parse`
+
+![parse install](/images/parseinstall.png)
 
 Wait for sometime until the parse-server is deployed. Check the status on Lens which is user-friendly.
 
@@ -159,6 +177,7 @@ Now we need to follow the instructions provided by bitnami chart i.e to get the 
 
 Run the following commands
 
+![export commands](/images/aftermathparse.png)
 
 Finally make curl request 
 
