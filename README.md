@@ -56,9 +56,8 @@ This will give us Kubectl command line tool and kube config file.
 
 Add an alias in .bashrc as follows to make things simpler:
 
-`
-alias kubectl="microk8s.kubectl"`
-`
+`alias kubectl="microk8s.kubectl"`
+
 
 Run `source .bashrc` after making changes to .bashrc file.
 
@@ -205,12 +204,19 @@ Prometheus is an open-source systems monitoring and alerting toolkit originally 
 Now things get a little interesting. We can setup Prometheus from scratch using helm just like we setup parse-server. However, since 
 we installed Lens we can just do it with a click!
 
+![install prometheus](/images/installprometheus.png)
+
 Background workflow when we click *install*
 
 - lens-metrics namespace is created
 - helm is used to setup prometheus from stable/prometheus helm-chart with metrics enabled (this saves a lot of time metrics are autoamatically enabled which is a huge bonus)
 
+![prometheus firing up](images/prometheussetup.png)
+
 Check the status of lens-metrics namespace and then we can access prometheus from the pod just by a click.
+
+![metrics](/images/prometheusmetrics)
+
 
 #### [Grafana](https://grafana.com/) Setup:
 
@@ -225,6 +231,8 @@ Search for for the grafana package
 
 `helm search repo grafana`
 
+![helm search grafana](/images/helmgrafanasearch.png)
+
 We will use bitnami/grafana which is stable
 
 Let's inspect the values of bitnami/grafana chart
@@ -237,12 +245,17 @@ Create a namespace which helps monitoring easy
 
 `kubectl create namespace grafana`
 
+![helm namespace grafana](/images/helmnamespacegrafana)
+
 **Deploying grafana using helm chart**
 
 name: grafana
+
 namespace: grafana
 
 `helm install grafana bitname/grafana --values grafana.values -n grafana`
+
+![helm install grafana](/images/helminstallgrafana.png)
 
 Wait for sometime until the grafana is deployed. Check the status on Lens which is user-friendly.
 
@@ -250,6 +263,7 @@ Now we need to follow the instructions provided by bitnami chart i.e to get the 
 
 Run the following commands
 
+![export commands](/images/aftermathgrafana)
 
 
 #### [Weavely](https://www.weave.works/product/cloud/) Setup:
@@ -265,9 +279,19 @@ We have to select
 - environment: Generic Kubernetes(in our case)
 - install using helm 
 
+![connect cluster](/images/weave1.png)
+
+![](/images/weave2.png)
+![](/images/weave3.png)
+![](/images/weave4.png)
+![](/images/weavenamespace.png)
+![](/images/helmweave.png)
+
 ***Prior to helm installation, create a namespace "weave" in kubernetes as it is a pre-requisite.***
 
 Now we can add our github repo for setting up CI/CD pipeline.Go to settings>configure and add our github repo url.
+
+![weave setup complete](/images/weaveperfect.png)
 
 Weavely offers prometheus and grafana monitoring as well, however we already have a reliable local setup.
 
