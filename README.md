@@ -1,4 +1,4 @@
-# On-Premise Deployments
+# On-Premise Deployment
 
 ## Project Dscription:
 
@@ -209,7 +209,7 @@ Background workflow when we click *install*
 
 Check the status of lens-metrics namespace and then we can access prometheus from the pod just by a click.
 
-![metrics](/images/prometheusmetrics)
+![metrics](/images/prometheusmetrics.png)
 
 
 #### [Grafana](https://grafana.com/) Setup:
@@ -239,7 +239,7 @@ Create a namespace which helps monitoring easy
 
 `kubectl create namespace grafana`
 
-![helm namespace grafana](/images/helmnamespacegrafana)
+![helm namespace grafana](/images/helmnamespacegrafana.png)
 
 **Deploying grafana using helm chart**
 
@@ -257,7 +257,7 @@ Now we need to follow the instructions provided by bitnami chart i.e to get the 
 
 Run the following commands
 
-![export commands](/images/aftermathgrafana)
+![export commands](/images/aftermathgrafana.png)
 
 
 #### [Weavely](https://www.weave.works/product/cloud/) Setup:
