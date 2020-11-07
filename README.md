@@ -5,13 +5,7 @@
 This project aims to solve on-premise application deployment. This is demonstrated by deploying parse-server on kubernetes. 
 The entire project focueses on resolving issues including Ease of clustered enterprise level deployments,Incremental remotely triggered application updates,Easy remote debugging, Health Alerts and Monitoring, Application Security (with source code protection) and Disaster management.
 
-# On-Premise Deployments
-
-## Project Dscription:
-
-This project aims to solve on-premise application deployment. This is demonstrated by deploying parse-server on kubernetes. The entire project focueses on resolving issues including Ease of clustered enterprise level deployments,Incremental remotely triggered application updates,Easy remote debugging, Health Alerts and Monitoring, Application Security (with source code protection) and Disaster management.
-
-GitHub repo link: https://blahh
+GitHub repo link: https://github.com/gade-raghav/Atlantask
 
 ## Installation and Usage Instructions
 
