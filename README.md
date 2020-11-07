@@ -294,11 +294,11 @@ Installation and Setup is complete.
 
 ## Use Cases and Edge Conditions
 
-- The entire deployment has been done using local setup and the same can be replicated on cloud environment if provided.
+- The entire deployment has been done using local setup and the same can be replicated on cloud environment if given access.
 
-- It is assumed that we have required volumes and disk space available for performing updates/upgrades, scaling environment etc.
+- Cluster is managed by nodeports and not loadbalancer as we are not usin any cloud services.
 
-- It is assumed that the application development follows a strictly GitOps approach for CI/CD.
+- Helm charts used for deployment has minimum required parameters enabled, however they can be changed using values.yaml file as per requirement.
 
 - Since helm charts are used for deployment, they are very reliable and hence requires minimal edit to charts. So every commit coming from the remote git source repo is already code analysed.
 
@@ -306,13 +306,83 @@ Installation and Setup is complete.
 
 ## Workflow
 
-Our workflow focuses on all the issues that have been mentioned in the problem statement.
+We'll pick up the issues mentioned in the problem statements and elaborate the workflow with images as well.
+
+#### Ease of clustered enterprise level deployments
+
+On cloud kubernetes clusters can be created using terraform given access. I have experience in creating kuberenetes cluster using terraform incase access is provided.
+As far as application deployment is concerned, helm charts themselves can be installed on clustered kubernetes, however deployment configuration like helmsman and fluxcd can be used. Fluxcd supports GitOps model wherein it would automatically update as soon as new code is pushed.
+The git repository forementioned has the charts and templates which are used for application deployment in our case.
+
+#### Incremental remotely triggered application updates
+
+Weave cloud has been used to resolve this issue however configuration files have a huge role to play in triggering updates.
+When we setup weave cloud, we passed in our github repo link. Every push to the repository will trigger a build and it will be deployed to kubernetes cluseter.
+
+####  Remote Debugging 
+
+Application logs can be pushed to a central entity like splunk. Metrics can be pushed to prometheus,signaleFX. Kubernetes supports demon fetchnk,prometheus and signalFX using which respective values of all pods on all nodes can be collected and pushed.
+In our case we have used Lens for the same.
+
+![](/images/prometheusmetrics.png)
+![](/images/prometheuslogs.png)
+
+#### Health alerts and monitoring
+
+Prometheus, Grafana and Weavely cloud has been collectively used to achieve health alerts and monitoring.
+We have used Lens IDE which makes it extremely easy to setup prometheus.
+Grafana has been setup from scratch usin helm charts.
+Weavely cloud also sets up prometheus and monitors all the metrics.
+
+
+Prometheus provides various metrics for data visualization.It is passed as data source for grafana.
+![](/images/prometheuswebui.png)
+![](/images/grafanadatasource.png)
+We can enable various dashboards for monitoring various metrics provided by prometheus.We have enabled a particular dashboard and the following are the representations.
+![](/images/grafanamonitoring1.png)
+![](/images/grafanamonitoring2.png)
+
+Weave cloud offers fine monitoring systemm as well. It also sends an email for every alert which has been demonstrated by a demo alert email.
+![](/images/weaveperfect.png)
+![](/images/weavemonitoring.png)
+![](/images/weavehealthandmon1.png)
+  
+#### Application Security
+
+We need to check node security and make sure un-necessary softwares are not installed on the nodes.To achieve this we can us CORE OS if our target is to just deploy a docker container.
+On cloud , we can use RBAC across all kubernetes componenets.For example, on AWS if a pod needs access to S3 bucket , it can be achieved by a service account with role based policy.This gives permission to the specified pod no matter on what node it runs within the cluster.
+It helps in achieving fine grained access control.
+External components like Lens can also be secured with roles.
+Inter pod communication can be secured with mutual tls using istio.
+
+#### Disaster Management
+
+Velero an open source project integrates with kubernetes cluster and data storage to provide backup and restore of native kuberntes objects.The advantage with velero it backups up kubernets objects from etcd database.
+
 
 ## Data formats and Reporting
 
+We receive the following metrics from prometheus and grafana.(All the metrics have not been mentioned as there was very minimal use case)
+
+**Prometheus**
+
+  - CPU Usage,Requests,Capacity and Linits
+  - Memory Usage,Requests,Capacity and Linits
+  - Pods Usage and Capacity
+ 
+**Grafana**
+
+  - CPU Usage
+  - Memory Usage
+  - All Processes networks I/O
+
+
+
+
+
 ## Performance and Scaling
 
-Large Scaling is utilized when the traffic of workloads at hand is expanded and here we have Lens for making it truly simple to perform scaling by only few clicks and edits.
+Large Scaling is utilized when the traffic of workloads at hand is expanded  and here we have Lens for making it truly simple to perform scaling by only few clicks and edits.
 
 The steps for scaling any component are as follows, however I will be emphasizing on Parse Server.
 
@@ -330,6 +400,10 @@ We can see the deployment progressing and pods scaling.
 ![](/images/scale5.png)
 
 Depending upon our requirement, we can have the pods scaled.
+
+## Unresolved Issues
+
+Incremental remotely triggered updates and Disaster management issue has been theoretically resolved but is not practically tested by me. However I have tested scaling the application and in the same lines, edits can be made to helm charts an pushed to git repo which will trigger CI/CD pipeline. I need to dig a little deeper and then try and test it for production usage. Moreover, I have not figured out disaster management issue and hence the above mentioned tool velero is not tested in my project. 
 
 
 
