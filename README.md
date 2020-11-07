@@ -317,17 +317,17 @@ Large Scaling is utilized when the traffic of workloads at hand is expanded and 
 The steps for scaling any component are as follows, however I will be emphasizing on Parse Server.
 
 Go to Lens > Deployments and select parse-server.
-![](/images/)
+![](/images/scale1.png)
 
 Click on edit which will give you the deployment file.
-![](/images/)
+![](/images/scale2.png)
 
 Change replicas to required number (2 in our case) and then save it.
-![](/images/)
+![](/images/scale3.png)
 
 We can see the deployment progressing and pods scaling.
-![](/images/)
-![](/images/)
+![](/images/scale4.png)
+![](/images/scale5.png)
 
 Depending upon our requirement, we can have the pods scaled.
 
