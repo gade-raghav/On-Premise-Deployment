@@ -308,6 +308,32 @@ Installation and Setup is complete.
 
 Our workflow focuses on all the issues that have been mentioned in the problem statement.
 
+## Data formats and Reporting
+
+## Performance and Scaling
+
+Large Scaling is utilized when the traffic of workloads at hand is expanded and here we have Lens for making it truly simple to perform scaling by only few clicks and edits.
+
+The steps for scaling any component are as follows, however I will be emphasizing on Parse Server.
+
+Go to Lens > Deployments and select parse-server.
+![](/images/scale1.png)
+
+Click on edit which will give you the deployment file.
+![](/images/scale2.png)
+
+Change replicas to required number (2 in our case) and then save it.
+![](/images/scale3.png)
+
+We can see the deployment progressing and pods scaling.
+![](/images/scale4.png)
+![](/images/scale5.png)
+
+Depending upon our requirement, we can have the pods scaled.
+
+
+
+
 
 
 
