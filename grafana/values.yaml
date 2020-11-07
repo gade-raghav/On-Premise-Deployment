@@ -286,14 +286,14 @@ extraVolumeMounts: []
 service:
   ## K8s service type
   ##
-  type: ClusterIP
+  type: NodePort
   ## Grafana service port
   ##
   port: 3000
   ## Specify the nodePort value for the LoadBalancer and NodePort service types.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ##
-  # nodePort:
+  nodePort:
   ## loadBalancerIP for the Grafana Service (optional, cloud specific)
   ## ref: http://kubernetes.io/docs/user-guide/services/#type-loadbalancer
   ##
