@@ -38,7 +38,7 @@ volumePermissions:
 ## ref: http://kubernetes.io/docs/user-guide/services/#publishing-services---service-types
 ##
 service:
-  type: NodePort
+  type: LoadBalancer
   # Parse dashboard HTTP Port
   port: 80
   ## loadBalancerIP:
@@ -406,4 +406,3 @@ mongodb:
     # storageClass: "-"
     accessMode: ReadWriteOnce
     size: 8Gi
-

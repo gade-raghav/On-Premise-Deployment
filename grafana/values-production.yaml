@@ -286,14 +286,14 @@ extraVolumeMounts: []
 service:
   ## K8s service type
   ##
-  type: NodePort
+  type: ClusterIP
   ## Grafana service port
   ##
   port: 3000
   ## Specify the nodePort value for the LoadBalancer and NodePort service types.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ##
-  nodePort: 32322
+  # nodePort:
   ## loadBalancerIP for the Grafana Service (optional, cloud specific)
   ## ref: http://kubernetes.io/docs/user-guide/services/#type-loadbalancer
   ##
@@ -315,7 +315,7 @@ service:
 ##
 ingress:
   ## Set to true to enable ingress record generation
-  enabled: false
+  enabled: true
 
   ## Set this to true in order to add the corresponding annotations for cert-manager
   certManager: false
@@ -358,7 +358,7 @@ ingress:
 ## Prometheus metrics
 ##
 metrics:
-  enabled: false
+  enabled: true
 
   ## Prometheus Operator ServiceMonitor configuration
   ##
@@ -391,7 +391,7 @@ metrics:
     #   prometheus: my-prometheus
 
 imageRenderer:
-  enabled: false
+  enabled: true
   ## Bitnami Grafana Image Renderer image
   ## ref: https://hub.docker.com/r/bitnami/grafana-image-renderer/tags/
   ##
@@ -466,4 +466,3 @@ imageRenderer:
       ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
       ##
       # scrapeTimeout: 10s
-
