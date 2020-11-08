@@ -310,7 +310,7 @@ We'll pick up the issues mentioned in the problem statements and elaborate on th
 
 #### Ease of clustered enterprise-level deployments
 
-On cloud Kubernetes, clusters can be created using terraform given access. I have experience in creating the Kubernetes cluster using terraform in case access is provided.
+On cloud, Kubernetes clusters can be created using terraform given access. I have experience in creating the Kubernetes cluster using terraform in case access is provided.
 As far as application deployment is concerned, helm charts themselves can be installed on clustered Kubernetes, however, deployment configuration like helmsman and fluxcd can be used. Fluxcd supports the GitOps model wherein it would automatically update as soon as the new code is pushed.
 The git repository aforementioned has the charts and templates which are used for application deployment in our case.
 
