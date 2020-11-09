@@ -281,7 +281,7 @@ We have to select
 ![](/images/weavenamespace.png)
 ![](/images/helmweave.png)
 
-*** Before helm installation, create a namespace "weave" in Kubernetes as it is a pre-requisite.***
+***Before helm installation, create a namespace "weave" in Kubernetes as it is a pre-requisite.***
 
 Now we can add our GitHub repo for setting up CI/CD pipeline. Go to settings>configure and add our GitHub repo URL.
 
