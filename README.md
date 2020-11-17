@@ -346,6 +346,7 @@ Weave cloud offers a fine monitoring system as well. It also sends an email for 
 ![](/images/weaveperfect.png)
 ![](/images/weavemonitoring.png)
 ![](/images/weavehealthandmon1.png)
+![](/images/sampleemail.png)
   
 #### Application Security
 
