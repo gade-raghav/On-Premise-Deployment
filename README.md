@@ -321,7 +321,7 @@ When we set up the Weavely cloud, we passed in our GitHub repo link. Every push 
 
 ####  Remote Debugging 
 
-Application logs can be pushed to a central entity like splunk. Metrics can be pushed to prometheus, SignalFx. Kubernetes supports demon sets,prometheus, and SignalFx using which respective values of all pods on all nodes can be collected and pushed.
+Application logs can be pushed to a central entity like splunk. Metrics can be pushed to prometheus, SignalFx. Kubernetes supports daemon sets,prometheus, and SignalFx using which respective values of all pods on all nodes can be collected and pushed.
 In our case, we have used Lens for the same.
 
 ![](/images/prometheusmetrics.png)
